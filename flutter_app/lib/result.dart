@@ -9,7 +9,13 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[Text('you did it',style: TextStyle(fontSize: 28),), Clear(clearQuestion)],
+      children: <Widget>[
+        Text(
+          'you did it',
+          style: TextStyle(fontSize: 28),
+        ),
+        Clear(clearQuestion)
+      ],
     );
   }
 }

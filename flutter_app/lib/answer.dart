@@ -15,7 +15,7 @@ final int answerNumber;
       child: RaisedButton(
         color: Colors.blue[300],
         textColor: Colors.white,
-        child: Text(answerText[answerNumber]),
+        child: Text(answerText[answerNumber]['text']),
         onPressed: selectHandler,
       ),
     );

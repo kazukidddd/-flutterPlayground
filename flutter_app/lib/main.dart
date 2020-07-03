@@ -17,28 +17,47 @@ class MyApp extends StatefulWidget {
 // _をつけることでprivateになる
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1}
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Dog', 'Rabbit', 'Snake', 'Elephant'],
+      'answers': [
+        {'text': 'Dog', 'score': 3},
+        {'text': 'Rabbit', 'score': 11},
+        {'text': 'Snake', 'score': 5},
+        {'text': 'Elephant', 'score': 9}
+      ],
     },
     {
       'questionText': 'What\'s your favorite instructor?',
-      'answers': ['Max', 'Max', 'Max', 'Max'],
+      'answers': [
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1}
+      ],
     }
   ];
   final rand = new Random();
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+
+    _totalScore += score;
     if (_questionIndex < _questions.length) {
       print('We have more questions!');
     } else {
       print('No more questions!');
     }
 
+    // _totalScore = _totalScore + score;
     setState(() {
       _questionIndex = _questionIndex + 1;
       // if (_questionIndex == 0) {
@@ -65,7 +84,10 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First App'),
         ),
         body: _questionIndex < _questions.length
-            ? Quiz(answerQuestion: _answerQuestion, questionIndex: _questionIndex, questions: _questions)
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,)
             : Result(_clearQuestion),
       ),
     );
