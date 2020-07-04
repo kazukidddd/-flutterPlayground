@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpracticeapp/presentation/signin/signin_page.dart';
+import 'package:flutterpracticeapp/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
-import '../book_list/book_list_page.dart';
 import 'main_model.dart';
 
 void main() {
@@ -37,13 +38,24 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   RaisedButton(
-                    child: Text('ボタン'),
+                    child: Text('新規登録'),
                     onPressed: () {
                       // todo
 //                      model.changeKazukiText();
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookListPage()),
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
+                      );
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text('ログイン'),
+                    onPressed: () {
+                      // todo
+//                      model.changeKazukiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInPage()),
                       );
                     },
                   ),
