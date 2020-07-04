@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterpracticeapp/next_page.dart';
+import 'package:provider/provider.dart';
+
+import 'main_model.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final items = List<String>.generate(100, (index) => 'Item $index');
+  final kazukiText = 'kazukiのprovider勉強';
 
   @override
   Widget build(BuildContext context) {
@@ -14,124 +16,36 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          leading: Icon(Icons.ondemand_video),
-          title: Text(
-            'YouTubeアプリ',
-            textAlign: TextAlign.start,
-          ),
-          actions: <Widget>[
-            SizedBox(
-              width: 36,
-              child: FlatButton(
-                child: Icon(Icons.ac_unit),
-                onPressed: () {
-                  // todo
-                },
-              ),
+      home: ChangeNotifierProvider<MainModel>(
+        create: (_) => MainModel(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'providerの勉強',
+              textAlign: TextAlign.start,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: SizedBox(
-                width: 36,
-                child: FlatButton(
-                  child: Icon(Icons.more_vert),
-                  onPressed: () {
-                    // todo
-                  },
-                ),
-              ),
-            )
-          ],
-        ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: Image.asset('images/kboy.jpg'),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        const Text(
-                          'kazukiのyoutube大学',
-                        ),
-                        FlatButton(
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.ondemand_video,
-                                color: Colors.red,
-                              ),
-                              Text('登録する'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () async {
-                        await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => NextPage('sfdf'),
-                            ));
-                      },
-                      contentPadding: EdgeInsets.all(8),
-                      leading: Image.asset('images/kboy.jpg'),
-                      title: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'kazukiのflutter基礎',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '234回再生',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Text(
-                                '6日前',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      trailing: Icon(Icons.more_vert),
-                    );
-                  },
-                ),
-              ),
-            ],
           ),
+          body: Consumer<MainModel>(builder: (context, model, child) {
+            return Center(
+              child: Column(
+                children: [
+                  Text(
+                    model.kazukiText,
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                  RaisedButton(
+                    child: Text('ボタン'),
+                    onPressed: () {
+                      // todo
+                      model.changeKazukiText();
+                    },
+                  ),
+                ],
+              ),
+            );
+          }),
         ),
       ),
     );
