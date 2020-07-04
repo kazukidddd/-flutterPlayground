@@ -10,12 +10,7 @@ class BookListModel extends ChangeNotifier {
     final document =
         await Firestore.instance.collection('books').getDocuments();
 
-    List<Book> books = document.documents
-        .map((doc) => Book(
-              doc['title'],
-              doc['createdAt'],
-            ))
-        .toList();
+    List<Book> books = document.documents.map((doc) => Book(doc)).toList();
     books.sort((a, b) => a.createdAt.compareTo(b.createdAt));
     this.books = books;
     notifyListeners();
