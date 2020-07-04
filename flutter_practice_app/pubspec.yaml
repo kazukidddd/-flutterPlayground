@@ -22,7 +22,8 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   provider: ^4.1.3
-
+  firebase_core: ^0.4.5  # add dependency for Firebase Core
+  cloud_firestore: ^0.13.7
 
 dev_dependencies:
   flutter_test:

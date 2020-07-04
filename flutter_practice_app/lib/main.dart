@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'book_list.dart';
 import 'main_model.dart';
 
 void main() {
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
+//        primaryColor: Colors.white,
+          ),
       home: ChangeNotifierProvider<MainModel>(
         create: (_) => MainModel(),
         child: Scaffold(
@@ -39,7 +40,11 @@ class MyApp extends StatelessWidget {
                     child: Text('ボタン'),
                     onPressed: () {
                       // todo
-                      model.changeKazukiText();
+//                      model.changeKazukiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookList()),
+                      );
                     },
                   ),
                 ],
