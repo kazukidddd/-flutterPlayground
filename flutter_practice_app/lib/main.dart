@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'book_list.dart';
+import 'book_list_page.dart';
 import 'main_model.dart';
 
 void main() {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
 //                      model.changeKazukiText();
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookList()),
+                        MaterialPageRoute(builder: (context) => BookListPage()),
                       );
                     },
                   ),
