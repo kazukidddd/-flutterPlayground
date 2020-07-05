@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterpracticeapp/domain/Book.dart';
 import 'package:flutterpracticeapp/presentation/add_book/add_book_page.dart';
 import 'package:flutterpracticeapp/presentation/book_list/book_list_model.dart';
+import 'package:flutterpracticeapp/presentation/webview_page/webview_page.dart';
 import 'package:provider/provider.dart';
 
 class BookListPage extends StatelessWidget {
@@ -46,6 +47,18 @@ class BookListPage extends StatelessWidget {
                           model.fetchBooks();
                         },
                       ),
+                      onTap: () async {
+                        try {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WebViewPage(),
+                            ),
+                          );
+                        } catch (e) {
+                          _showDialog(context, e.toString());
+                        }
+                      },
                       onLongPress: () async {
                         // todo 削除機能
                         await showDialog<void>(
@@ -109,6 +122,7 @@ class BookListPage extends StatelessWidget {
     }
   }
 
+  // ignore: missing_return
   Future _showDialog(
     BuildContext context,
     String title,

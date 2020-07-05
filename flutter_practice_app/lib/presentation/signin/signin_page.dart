@@ -62,6 +62,7 @@ class SignInPage extends StatelessWidget {
     );
   }
 
+  // ignore: missing_return
   Future _showDialog(
     BuildContext context,
     String title,
