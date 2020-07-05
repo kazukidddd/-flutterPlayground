@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpracticeapp/domain/Book.dart';
+import 'package:flutterpracticeapp/util/constant.dart';
 
 class AddBookModel extends ChangeNotifier {
   String bookTitle = '';
@@ -13,6 +14,7 @@ class AddBookModel extends ChangeNotifier {
       {
         'title': bookTitle,
         'createdAt': Timestamp.now(),
+        'uid': Constant.uid,
       },
     );
   }
@@ -23,6 +25,7 @@ class AddBookModel extends ChangeNotifier {
     await document.updateData({
       'title': bookTitle,
       'createdAt': book.createdAt,
+      'uid': Constant.uid,
     });
   }
 }

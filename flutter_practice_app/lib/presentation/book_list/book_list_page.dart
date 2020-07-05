@@ -20,48 +20,56 @@ class BookListPage extends StatelessWidget {
             final books = model.books;
             final listTiles = books
                 .map(
-                  (book) => ListTile(
-                    title: Text(book.title),
-                    trailing: IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () async {
-                        // todo
+                  (book) => Container(
+//                    color: Colors.amber,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      title: Text(book.title),
+                      trailing: IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () async {
+                          // todo
 
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddBookPage(
-                              book: book,
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddBookPage(
+                                book: book,
+                              ),
+                              fullscreenDialog: true,
                             ),
-                            fullscreenDialog: true,
-                          ),
+                          );
+                          model.fetchBooks();
+                        },
+                      ),
+                      onLongPress: () async {
+                        // todo 削除機能
+                        await showDialog<void>(
+                          context: context,
+//                        barrierDismissible: false, // user must tap button!
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('${book.title}を削除しますか？'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('OK'),
+                                  onPressed: () async {
+                                    Navigator.of(context).pop();
+
+                                    // todo 削除機能
+                                    await deleteBook(model, book, context);
+                                  },
+                                ),
+                              ],
+                            );
+                          },
                         );
-                        model.fetchBooks();
                       },
                     ),
-                    onLongPress: () async {
-                      // todo 削除機能
-                      await showDialog<void>(
-                        context: context,
-//                        barrierDismissible: false, // user must tap button!
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('${book.title}を削除しますか？'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text('OK'),
-                                onPressed: () async {
-                                  Navigator.of(context).pop();
-
-                                  // todo 削除機能
-                                  await deleteBook(model, book, context);
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
                   ),
                 )
                 .toList();

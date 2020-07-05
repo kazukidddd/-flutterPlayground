@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpracticeapp/util/constant.dart';
 
 class SignInModel extends ChangeNotifier {
   String mail = '';
@@ -21,5 +22,6 @@ class SignInModel extends ChangeNotifier {
     );
 
     final uid = result.user.uid;
+    Constant.uid = uid;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpracticeapp/presentation/book_list/book_list_page.dart';
 import 'package:flutterpracticeapp/presentation/signin/signin_model.dart';
 import 'package:provider/provider.dart';
 
@@ -41,9 +42,9 @@ class SignInPage extends StatelessWidget {
                     },
                   ),
                   RaisedButton(
-                    child: Text('登録する'),
+                    child: Text('ログイン'),
                     onPressed: () async {
-                      // todo サインアップ
+                      // todo ログイン
                       try {
                         await model.signIn();
                         _showDialog(context, '成功しました');
@@ -73,10 +74,14 @@ class SignInPage extends StatelessWidget {
           title: Text(title),
           actions: <Widget>[
             FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
+              onPressed: () async {
+                Navigator.of(context).pop(true);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookListPage()),
+                );
               },
+              child: Text('OK'),
             ),
           ],
         );

@@ -5,9 +5,11 @@ class Book {
     documentID = doc.documentID;
     title = doc['title'];
     createdAt = doc['createdAt'];
+    uid = doc['uid'];
   }
 
   String documentID;
   String title;
+  String uid;
   Timestamp createdAt;
 }

@@ -25,6 +25,7 @@ dependencies:
   firebase_core: ^0.4.5  # add dependency for Firebase Core
   cloud_firestore: ^0.13.7
   firebase_auth: ^0.16.1
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:

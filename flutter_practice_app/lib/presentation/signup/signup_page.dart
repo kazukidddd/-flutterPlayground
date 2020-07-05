@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpracticeapp/presentation/book_list/book_list_page.dart';
 import 'package:flutterpracticeapp/presentation/signup/signup_model.dart';
 import 'package:provider/provider.dart';
 
@@ -76,6 +77,10 @@ class SignUpPage extends StatelessWidget {
               child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookListPage()),
+                );
               },
             ),
           ],
