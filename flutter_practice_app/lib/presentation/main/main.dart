@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpracticeapp/presentation/book_list/book_list_page.dart';
 import 'package:flutterpracticeapp/presentation/signin/signin_page.dart';
 import 'package:flutterpracticeapp/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,17 @@ class MyApp extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 30,
                     ),
+                  ),
+                  RaisedButton(
+                    child: Text('本一覧'),
+                    onPressed: () {
+                      // todo
+//                      model.changeKazukiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookListPage()),
+                      );
+                    },
                   ),
                   RaisedButton(
                     child: Text('新規登録'),

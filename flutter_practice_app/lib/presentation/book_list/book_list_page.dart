@@ -29,6 +29,9 @@ class BookListPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
+                      leading: Image.network(book.imageURL != null
+                          ? book.imageURL
+                          : 'https://jp.ubergizmo.com/wp-content/uploads/2020/05/steve-jobs-photo-first-iPhone-15-sized.jpg'),
                       title: Text(book.title),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),

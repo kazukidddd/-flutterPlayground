@@ -6,10 +6,12 @@ class Book {
     title = doc['title'];
     createdAt = doc['createdAt'];
     uid = doc['uid'];
+    imageURL = doc['imageURL'];
   }
 
   String documentID;
   String title;
   String uid;
   Timestamp createdAt;
+  String imageURL;
 }
